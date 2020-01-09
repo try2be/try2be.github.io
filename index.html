@@ -152,6 +152,86 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-SQL1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/09/SQL1/">SQL1</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/09/SQL1/" class="archive-article-date">
+  	<time datetime="2020-01-09T12:20:26.795Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>nctf：sqlinjection</p>
+<h4 id="南邮ctf-sqlinjection"><a href="#南邮ctf-sqlinjection" class="headerlink" title="南邮ctf-sqlinjection"></a>南邮ctf-sqlinjection</h4><p>tip:反斜杠可以用来转义 仔细查看相关函数的用法<br>源码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">#GOAL: login as admin,then get the flag;</span><br><span class="line">error_reporting(0);</span><br><span class="line">require &#39;db.inc.php&#39;;</span><br><span class="line"></span><br><span class="line">function clean($str)&#123;</span><br><span class="line">	if(get_magic_quotes_gpc())&#123;</span><br><span class="line">		$str&#x3D;stripslashes($str);</span><br><span class="line">	&#125;</span><br><span class="line">	return htmlentities($str, ENT_QUOTES);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$username &#x3D; @clean((string)$_GET[&#39;username&#39;]);</span><br><span class="line">$password &#x3D; @clean((string)$_GET[&#39;password&#39;]);</span><br><span class="line"></span><br><span class="line">$query&#x3D;&#39;SELECT * FROM users WHERE name&#x3D;\&#39;&#39;.$username.&#39;\&#39; AND pass&#x3D;\&#39;&#39;.$password.&#39;\&#39;;&#39;;</span><br><span class="line">$result&#x3D;mysql_query($query);</span><br><span class="line">if(!$result || mysql_num_rows($result) &lt; 1)&#123;</span><br><span class="line">	die(&#39;Invalid password!&#39;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">echo $flag;</span><br><span class="line">--&gt;</span><br><span class="line">Invalid password!</span><br></pre></td></tr></table></figure>
+<p>首先查阅源码中的htmlentities()新函数</p>
+<ul>
+<li>magic_quotes_runtime<br>在php的配置文件中，有个布尔值的设置，就是magic_quotes_runtime,当它打开时，php的大部分函数自动的给从外部引入的(包括数据库或者文件)数据中的溢出字符加上反斜线</li>
+<li>get_magic_quotes_gpc<br>(PHP 4, PHP 5, PHP 7),get_magic_quotes_gpc — 获取当前 magic_quotes_gpc 的配置选项设置<br>如果 magic_quotes_gpc 为关闭时返回 0，否则返回 1。在 PHP 5.4.O 起将始终返回 FALSE。</li>
+<li>stripslashes()<br>返回一个去除转义反斜线后的字符串（&#39; 转换为 ‘ 等等）。双反斜线（\）被转换为单个反斜线（\）。 </li>
+<li>htmlentities()<br>htmlentities() 函数把字符转换为 HTML 实体。</li>
+<li>ENT_QUOTES<br>If ENT_QUOTES is set, both single and double quotes are translated<br>如果被设置后，单引号双引号都被转义了<br>——</li>
+</ul>
+<p>这样看来，if(get_magic_quotes_gpc()){$str=stripslashes($str);}好像就是没有什么用？，暂时这样理解，那clean函数就是 htmlentities($str, ENT_QUOTES); 也就是将字符串的单双引号转义！所以没有办法直接用单引号来闭合!<br>这时候想起了题目一开始得到的提示——反斜杠用来转义<br>再看这一句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM users WHERE name&#x3D;\&#39;&#39;.$username.&#39;\&#39; AND pass&#x3D;\&#39;&#39;.$password.&#39;\&#39;;</span><br></pre></td></tr></table></figure>
+<p>再去掉&#39;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM users WHERE name&#x3D;&#39;.$username.&#39; AND pass&#x3D;&#39;.$password.&#39;;</span><br></pre></td></tr></table></figure>
+<p>已知无法用单引号闭合，那就用反斜杠来结合username后的引号将语句构造成</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM users WHERE name&#x3D;&#39;.$username. AND pass&#x3D;&#39;.$password.&#39;;</span><br></pre></td></tr></table></figure>
+<p>试一下username=&amp;password= or 1%23,成功，<br>flag=nctf{sql_injection_is_interesting}<br>说明对clean的理解是对的<br>date: 2020-01-09 20:20:26</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/09/SQL1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-关于kali更新源" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -176,7 +256,7 @@
 <ul>
 <li>更新源<br>中科大:<br>deb <a href="http://mirrors.ustc.edu.cn/kali" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/kali</a> kali-rolling main non-free contrib<br>deb-src <a href="http://mirrors.ustc.edu.cn/kali" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/kali</a> kali-rolling main non-free contrib<br>浙大：<br>deb <a href="http://mirrors.zju.edu.cn/kali" target="_blank" rel="noopener">http://mirrors.zju.edu.cn/kali</a> kali-rolling main non-free contrib<br>deb-src <a href="http://mirrors.zju.edu.cn/kali" target="_blank" rel="noopener">http://mirrors.zju.edu.cn/kali</a> kali-rolling main non-free contrib  a<br>还有阿里，清华等其他源，今天我使用的是zju的。</li>
 </ul>
-<p>注：更新时间长，过程中会有一些选择和注意事项。<br>date:2020年1月02点10分</p>
+<p>注：更新时间长，过程中会有一些选择和注意事项。<br>date:2020年1月1日02点10分</p>
 
       
 
@@ -389,7 +469,7 @@
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
-		showTags: false
+		showTags: true
 	}
 </script>
 
