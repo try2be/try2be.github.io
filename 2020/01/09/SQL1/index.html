@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>SQL1 | try2be</title>
+  <title>sql1 | try2be</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="nctf：sqlinjection 南邮ctf-sqlinjectiontip:反斜杠可以用来转义 仔细查看相关函数的用法源码: 123456789101112131415161718192021222324&lt;!--#GOAL: login as admin,then get the flag;error_reporting(0);require &#39;db.inc.php&#39;;f">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SQL1">
+<meta property="og:title" content="sql1">
 <meta property="og:url" content="http://yoursite.com/2020/01/09/SQL1/index.html">
 <meta property="og:site_name" content="try2be">
 <meta property="og:description" content="nctf：sqlinjection 南邮ctf-sqlinjectiontip:反斜杠可以用来转义 仔细查看相关函数的用法源码: 123456789101112131415161718192021222324&lt;!--#GOAL: login as admin,then get the flag;error_reporting(0);require &#39;db.inc.php&#39;;f">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-01-09T12:20:26.795Z">
-<meta property="article:modified_time" content="2020-01-09T12:39:11.003Z">
+<meta property="article:modified_time" content="2020-01-22T09:35:04.623Z">
 <meta property="article:author" content="lu2hx0">
+<meta property="article:tag" content="nctf">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="try2be" type="application/atom+xml">
@@ -53,13 +54,13 @@
 		  <h1 class="header-author"><a href="/">lu2hx0</a></h1>
 		</hgroup>
 		
+		<p class="header-subtitle">抱歉，俺太弱了</p>
+		
 
 		<nav class="header-menu">
 			<ul>
 			
 				<li><a href="/">主页</a></li>
-	        
-				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -111,9 +112,9 @@
 			  <h1 class="header-author js-header-author">lu2hx0</h1>
 			</hgroup>
 			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>抱歉，俺太弱了<i class="icon icon-quo-right"></i></p>
 			
 			
-				
 			
 				
 			
@@ -137,9 +138,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -161,7 +160,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      SQL1
+      sql1
     </h1>
   
 
@@ -179,7 +178,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">#GOAL: login as admin,then get the flag;</span><br><span class="line">error_reporting(0);</span><br><span class="line">require &#39;db.inc.php&#39;;</span><br><span class="line"></span><br><span class="line">function clean($str)&#123;</span><br><span class="line">	if(get_magic_quotes_gpc())&#123;</span><br><span class="line">		$str&#x3D;stripslashes($str);</span><br><span class="line">	&#125;</span><br><span class="line">	return htmlentities($str, ENT_QUOTES);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$username &#x3D; @clean((string)$_GET[&#39;username&#39;]);</span><br><span class="line">$password &#x3D; @clean((string)$_GET[&#39;password&#39;]);</span><br><span class="line"></span><br><span class="line">$query&#x3D;&#39;SELECT * FROM users WHERE name&#x3D;\&#39;&#39;.$username.&#39;\&#39; AND pass&#x3D;\&#39;&#39;.$password.&#39;\&#39;;&#39;;</span><br><span class="line">$result&#x3D;mysql_query($query);</span><br><span class="line">if(!$result || mysql_num_rows($result) &lt; 1)&#123;</span><br><span class="line">	die(&#39;Invalid password!&#39;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">echo $flag;</span><br><span class="line">--&gt;</span><br><span class="line">Invalid password!</span><br></pre></td></tr></table></figure>
 <p>首先查阅源码中的新函数</p>
 <ul>
-<li>magic_quotes_runtime<br>在php的配置文件中，有个布尔值的设置，就是magic_quotes_runtime,当它打开时，php的大部分函数自动的给从外部引入的(包括数据库或者文件)数据中的溢出字符加上反斜线</li>
+<li>magic_quotes_runtime<br>在php的配置文件中，有个布尔值的设置，就是magic_quotes_runtime,当它打开时，php的大部分函数自动的给从外部引入的(包括数据库或者文件)数据中的溢出字符加上反斜线<a id="more"></a></li>
 <li>get_magic_quotes_gpc<br>(PHP 4, PHP 5, PHP 7),get_magic_quotes_gpc — 获取当前 magic_quotes_gpc 的配置选项设置<br>如果 magic_quotes_gpc 为关闭时返回 0，否则返回 1。在 PHP 5.4.O 起将始终返回 FALSE。</li>
 <li>stripslashes()<br>返回一个去除转义反斜线后的字符串（&#39; 转换为 ‘ 等等）。双反斜线（\）被转换为单个反斜线（\）。 </li>
 <li>htmlentities()<br>htmlentities() 函数把字符转换为 HTML 实体。</li>
@@ -221,6 +220,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">NCTF</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -284,6 +294,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/01/22/%E5%A2%A8%E8%80%85%E5%AD%A6%E9%99%A2-SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95-%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          墨者学院-SQL注入漏洞测试-布尔盲注
+        
+      </div>
+    </a>
   
   
     <a href="/2020/01/01/%E5%85%B3%E4%BA%8Ekali%E6%9B%B4%E6%96%B0%E6%BA%90/" id="article-nav-older" class="article-nav-link-wrap">
@@ -422,6 +441,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">NCTF</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">墨者学院·</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>

