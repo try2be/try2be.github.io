@@ -157,6 +157,159 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-bugkuctf-web-never-give-up" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/04/bugkuctf-web-never-give-up/">bugkuctf-web-never give up</a>
+    </h1>
+  
+
+        
+        <a href="/2020/02/04/bugkuctf-web-never-give-up/" class="archive-article-date">
+  	<time datetime="2020-02-04T12:51:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="WEB-NEVER-GIVE-UP"><a href="#WEB-NEVER-GIVE-UP" class="headerlink" title="WEB - NEVER GIVE UP"></a>WEB - NEVER GIVE UP</h5><p>never never never give up !!!<br>url   中有参数id=1<br>url :<br><a href="http://123.206.87.240:8006/test/hello.php?id=1" target="_blank" rel="noopener">http://123.206.87.240:8006/test/hello.php?id=1</a><br>sqlmap 跑一下发现不能注入<br>看看源码<br>&lt; !–1p.html– &gt;<br>never never never give up !!!<br>1p.html<br>访问这个页面(test路径下访问1p.html)会跳转至<a href="https://www.bugku.com/" target="_blank" rel="noopener">https://www.bugku.com/</a><br>说明有问题<br>查看 1p.html的源码<br>view-source:<a href="http://123.206.87.240:8006/test/1p.html" target="_blank" rel="noopener">http://123.206.87.240:8006/test/1p.html</a><br>得到</p>
+        
+          <a class="article-more-a" href="/2020/02/04/bugkuctf-web-never-give-up/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bugkuctf</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/04/bugkuctf-web-never-give-up/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-BUGKUCTF" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/04/BUGKUCTF/">BUGKUCTF</a>
+    </h1>
+  
+
+        
+        <a href="/2020/02/04/BUGKUCTF/" class="archive-article-date">
+  	<time datetime="2020-02-04T12:15:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="记事本装了很多-一次性传上来"><a href="#记事本装了很多-一次性传上来" class="headerlink" title="记事本装了很多,一次性传上来"></a>记事本装了很多,一次性传上来</h4><h5 id="bugkuctf-网站被黑"><a href="#bugkuctf-网站被黑" class="headerlink" title="bugkuctf-网站被黑"></a>bugkuctf-网站被黑</h5><p>用御剑扫描<a href="http://123.206.87.240:8002/webshell/" target="_blank" rel="noopener">http://123.206.87.240:8002/webshell/</a><br>得到两个网址<br><a href="http://123.206.87.240:8002/webshell/index.php" target="_blank" rel="noopener">http://123.206.87.240:8002/webshell/index.php</a><br><a href="http://123.206.87.240:8002/webshell/shell.php" target="_blank" rel="noopener">http://123.206.87.240:8002/webshell/shell.php</a></p>
+<p>进入<a href="http://123.206.87.240:8002/webshell/shell.php" target="_blank" rel="noopener">http://123.206.87.240:8002/webshell/shell.php</a><br>需要PASS<br>先试一下有没有注入，sqlmap，发现没有<br>用burpsuite爆破  pass为hack<br>得到flag:flag{hack_bug_ku035}</p>
+        
+          <a class="article-more-a" href="/2020/02/04/BUGKUCTF/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bugkuctf</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/04/BUGKUCTF/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-BUGKUCTF-SQL注入2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -696,6 +849,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">BUGKUCTf</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">bugkuctf</a>
               </li>
             
             <div class="clearfix"></div>
