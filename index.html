@@ -177,7 +177,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h5 id="WEB-NEVER-GIVE-UP"><a href="#WEB-NEVER-GIVE-UP" class="headerlink" title="WEB - NEVER GIVE UP"></a>WEB - NEVER GIVE UP</h5><p>never never never give up !!!<br>url   中有参数id=1<br>url :<br><a href="http://123.206.87.240:8006/test/hello.php?id=1" target="_blank" rel="noopener">http://123.206.87.240:8006/test/hello.php?id=1</a><br>sqlmap 跑一下发现不能注入<br>看看源码<br>&lt; !–1p.html– &gt;<br>never never never give up !!!<br>1p.html<br>访问这个页面(test路径下访问1p.html)会跳转至<a href="https://www.bugku.com/" target="_blank" rel="noopener">https://www.bugku.com/</a><br>说明有问题<br>查看 1p.html的源码<br>view-source:<a href="http://123.206.87.240:8006/test/1p.html" target="_blank" rel="noopener">http://123.206.87.240:8006/test/1p.html</a><br>得到</p>
+        <h5 id="WEB-NEVER-GIVE-UP"><a href="#WEB-NEVER-GIVE-UP" class="headerlink" title="WEB - NEVER GIVE UP"></a>WEB - NEVER GIVE UP</h5><p>never never never give up !!!<br>url   中有参数id=1<br>url :<br><a href="http://123.206.87.240:8006/test/hello.php?id=1" target="_blank" rel="noopener">http://123.206.87.240:8006/test/hello.php?id=1</a><br>sqlmap 跑一下发现不能注入<br>看看源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt; !-<span class="number">-1</span>p.html-- &gt;</span><br><span class="line">never never never give up !!!</span><br></pre></td></tr></table></figure>
+<p>1p.html<br>访问这个页面(test路径下访问1p.html)会跳转至<a href="https://www.bugku.com/" target="_blank" rel="noopener">https://www.bugku.com/</a><br>说明有问题<br>查看 1p.html的源码<br>view-source:<a href="http://123.206.87.240:8006/test/1p.html" target="_blank" rel="noopener">http://123.206.87.240:8006/test/1p.html</a><br>得到</p>
         
           <a class="article-more-a" href="/2020/02/04/bugkuctf-web-never-give-up/#more">more >></a>
         
