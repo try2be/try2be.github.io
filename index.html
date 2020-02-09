@@ -157,6 +157,89 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-弱类型相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/09/%E5%BC%B1%E7%B1%BB%E5%9E%8B%E7%9B%B8%E5%85%B3/">弱类型</a>
+    </h1>
+  
+
+        
+        <a href="/2020/02/09/%E5%BC%B1%E7%B1%BB%E5%9E%8B%E7%9B%B8%E5%85%B3/" class="archive-article-date">
+  	<time datetime="2020-02-09T11:38:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="弱类型在CTF题中还是挺常见的，也做过几次了。和一些相关想到的的东西小记一下。"><a href="#弱类型在CTF题中还是挺常见的，也做过几次了。和一些相关想到的的东西小记一下。" class="headerlink" title="弱类型在CTF题中还是挺常见的，也做过几次了。和一些相关想到的的东西小记一下。"></a>弱类型在CTF题中还是挺常见的，也做过几次了。和一些相关想到的的东西小记一下。</h5><ul>
+<li>0x01<br>在PHP中==和===的区别<br>===比较两个变量的值和类型；==比较两个变量的值，不比较数据类型。<br>当等号两边类型不同时，先转换为相同的类型，再对转换后的值进行比较，如果比较一个数字和字符串或者涉及到数字内容的字符串，则字符串会被转换成数值并且比较按照常数值进行比较(该字符串的开始部分决定了它的值，如果该字符串以合法的数值开始，则使用该数值，否则其值为0)</li>
+</ul>
+<p>例</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">﻿<span class="meta">&lt;?php</span></span><br><span class="line">show_source(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="keyword">include</span>(<span class="string">"config.php"</span>);</span><br><span class="line">$a=@$_GET[<span class="string">'a'</span>];</span><br><span class="line">$b=@$_GET[<span class="string">'b'</span>];</span><br><span class="line"><span class="keyword">if</span>($a==<span class="number">0</span> <span class="keyword">and</span> $a)&#123;</span><br><span class="line">    <span class="keyword">echo</span> $flag1;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(is_numeric($b))&#123;</span><br><span class="line">    <span class="keyword">exit</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>($b&gt;<span class="number">1234</span>)&#123;</span><br><span class="line">    <span class="keyword">echo</span> $flag2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>利用==，a=a,b=1235a即可</p>
+<ul>
+<li><p>0x02<br>hash:php处理哈希字符串时,利用”!=”或”==”来比较</p>
+        
+          <a class="article-more-a" href="/2020/02/09/%E5%BC%B1%E7%B1%BB%E5%9E%8B%E7%9B%B8%E5%85%B3/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">菜鸡笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/09/%E5%BC%B1%E7%B1%BB%E5%9E%8B%E7%9B%B8%E5%85%B3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-bugkuctf-web-never-give-up" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -855,6 +938,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">bugkuctf</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">菜鸡笔记</a>
               </li>
             
             <div class="clearfix"></div>
