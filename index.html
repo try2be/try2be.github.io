@@ -157,6 +157,79 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Reallyfailed" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/07/Reallyfailed/">Reallyfailed</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/07/Reallyfailed/" class="archive-article-date">
+  	<time datetime="2020-03-07T10:26:02.745Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="工具使用：Burp-suite-pro-v1-6-Sqlmap1-3-11-80，Firefox，Google-Chrome"><a href="#工具使用：Burp-suite-pro-v1-6-Sqlmap1-3-11-80，Firefox，Google-Chrome" class="headerlink" title="工具使用：Burp suite pro-v1.6,Sqlmap1.3.11.80，Firefox，Google Chrome"></a>工具使用：Burp suite pro-v1.6,Sqlmap1.3.11.80，Firefox，Google Chrome</h4><h4 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h4><p>打开burpsuite在burpsuite的spider模块，点击spider status里面spider is running打开spider，然后在target模块里面的左边会出现网址(主)，然后点击要查看的网址，登录网址，在target模块的界面右侧会出现，网址目录，包括mime类型，开始查找我们要的asp或者php<br>找了很多的学校<br>攀枝花学院的 zsw.pzhu.cn 站内有一搜索框，检查反射性xss漏洞，输入一段<br>` payload:script&gt;alert(hack by try2be)</script><br>返回响应输入参数含有不允许的串，可能引起注入或跨站脚本风险，禁止本页面执行！ </p>
+<ul>
+<li>乐山师范的邮箱登录页面</li>
+<li><a href="https://mail.lsnu.edu.cn/?q=resetpw" target="_blank" rel="noopener">https://mail.lsnu.edu.cn/?q=resetpw</a><br>可以看到url中有一参数q，尝试sqlmap查看是否可以注入<br>返回heuristic (basic) test shows that GET parameter ‘q’ might not be injectable<br>没戏<br>乐山师范的教工登录数字校园：</li>
+<li><a href="https://vpn.lsnu.edu.cn/por/login_psw.csp?sfrnd=2346912324982305&amp;encrypt=1" target="_blank" rel="noopener">https://vpn.lsnu.edu.cn/por/login_psw.csp?sfrnd=2346912324982305&amp;encrypt=1</a><br>这里发现他的用户名是六位教工号，所以试想会不会有爆破的可能，<br>抓包后发现<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">POST &#x2F;por&#x2F;login_psw.csp?sfrnd&#x3D;2346912324982305&amp;encrypt&#x3D;1 HTTP&#x2F;1.1</span><br><span class="line">Host: vpn.lsnu.edu.cn</span><br><span class="line">User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64; rv:73.0) Gecko&#x2F;20100101 Firefox&#x2F;73.0</span><br><span class="line">Accept: text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;webp,*&#x2F;*;q&#x3D;0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q&#x3D;0.8,zh-TW;q&#x3D;0.7,zh-HK;q&#x3D;0.5,en-US;q&#x3D;0.3,en;q&#x3D;0.2</span><br><span class="line">Accept-Encoding: gzip, deflate, br</span><br><span class="line">Content-Type: application&#x2F;x-www-form-urlencoded</span><br><span class="line">Content-Length: 68</span><br><span class="line">Origin: https:&#x2F;&#x2F;vpn.lsnu.edu.cn</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Referer: https:&#x2F;&#x2F;vpn.lsnu.edu.cn&#x2F;por&#x2F;login_psw.csp?rnd&#x3D;0.2761568382843841</span><br><span class="line">Cookie: TWFID&#x3D;07d80d69c551240b; collection&#x3D;%7Bauto_login_count%3A0%7D; VpnLine&#x3D;https%3A%2F%2Fvpn.lsnu.edu.cn%2F; webonly&#x3D;1; allowlogin&#x3D;1; g_LoginPage&#x3D;login_psw; VisitTimes&#x3D;0; haveLogin&#x3D;0</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line"></span><br><span class="line">mitm_result&#x3D;&amp;svpn_name&#x3D;123456&amp;svpn_password&#x3D;MTIzNDU2&amp;svpn_rand_code&#x3D;</span><br></pre></td></tr></table></figure>
+现在看来是有机会进行一些处理<br>既然都有个包了，就先用sqlmap跑一下吧<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[WARNING] GET parameter &#39;encrypt&#39; does not seem to be injectable</span><br><span class="line">[20:32:56] [CRITICAL] all tested parameters do not appear to be injectable. Try to increase values for &#39;--level&#39;&#x2F;&#39;--risk&#39; options if you wish to perform more tests. If you suspect that there is some kind of protection mechanism involved (e.g. WAF) maybe you could try to use option &#39;--tamper&#39; (e.g. &#39;--tamper&#x3D;space2comment&#39;) and&#x2F;or switch &#39;--random-agent&#39;</span><br><span class="line">[20:32:56] [WARNING] HTTP error codes detected during run:</span><br><span class="line">400 (Bad Request) - 755 times</span><br></pre></td></tr></table></figure>
+失败。</li>
+</ul>
+<p>先尝试弱密码（这里只是简单的尝试了几种万能密码和sql注入语句），失败</p>
+<p>最后尝试爆破<br>首先就有个问题，我新换的这个v1.6版本的burp有点奇怪，因为他没有start attack。？？？？？<br>也google不到类似的问题，那现在我用1.7的burp来做爆破<br>cmd 进入burp1.7的文件夹<br>dos：java -jar BurpUnlimited.jar<br>打开burp1.7<br>开启proxy<br>抓包send to intruder<br>positions 先clear<br>然后在 name和 password处add<br>选择 Attack type 为 Cluster bomb<br>payloads设置<br>1设置为 number(因为他要的是六位教工号)，2设置好字典-payload options 点击load加入准备好的字典。<br>(这里的密码经过base64所以要在payload processing设置 add rule encode base64)<br>设置好了后 start attack 等结果<br>经历了一个十分漫长的等待，居然还没有把第一个字典爆完(所以真的需要耐心还有强大的字典<br>从晚上10点开始到早上8点，十个小时，414025/20700000，我觉得，有点困难<br>所有字典在尝试了一个多星期左右时间都没有成功</p>
+<p>弱密码的确是占了很大部分的EDUSRC，但是这并不容易，所以我想 我还是把重心放在XSS上面。虽然并没有成功，但是通过这次尝试也学到了很多。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/07/Reallyfailed/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-攻防世界web新手练习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -847,70 +920,10 @@
 
 
   
-    <article id="post-关于这个博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/29/%E5%85%B3%E4%BA%8E%E8%BF%99%E4%B8%AA%E5%8D%9A%E5%AE%A2/">关于这个博客</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/29/%E5%85%B3%E4%BA%8E%E8%BF%99%E4%B8%AA%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2019-12-29T08:31:09.602Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h2 id="欢迎来到我的博客"><a href="#欢迎来到我的博客" class="headerlink" title="欢迎来到我的博客"></a>欢迎来到我的博客</h2><p>现在还没有完善这个博客，我接下来会学更多关于js和css的知识来慢慢修改这里。后面慢慢在这里记录一些东西。<br>这里也感谢Github上的litten。  </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/29/%E5%85%B3%E4%BA%8E%E8%BF%99%E4%B8%AA%E5%8D%9A%E5%AE%A2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    </nav>
   
 
 
