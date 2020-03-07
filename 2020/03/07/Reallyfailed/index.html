@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Reallyfailed | try2be</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="工具使用：Burp suite pro-v1.6,Sqlmap1.3.11.80，Firefox，Google Chrome记录打开burpsuite在burpsuite的spider模块，点击spider status里面spider is running打开spider，然后在target模块里面的左边会出现网址(主)，然后点击要查看的网址，登录网址，在target模块的界面右侧会出现，网址目">
+  <meta name="description" content="工具使用：Burp suite pro-v1.6,Sqlmap1.3.11.80，Firefox，Google Chrome">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Reallyfailed">
 <meta property="og:url" content="http://yoursite.com/2020/03/07/Reallyfailed/index.html">
 <meta property="og:site_name" content="try2be">
-<meta property="og:description" content="工具使用：Burp suite pro-v1.6,Sqlmap1.3.11.80，Firefox，Google Chrome记录打开burpsuite在burpsuite的spider模块，点击spider status里面spider is running打开spider，然后在target模块里面的左边会出现网址(主)，然后点击要查看的网址，登录网址，在target模块的界面右侧会出现，网址目">
+<meta property="og:description" content="工具使用：Burp suite pro-v1.6,Sqlmap1.3.11.80，Firefox，Google Chrome">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-03-07T10:26:02.745Z">
-<meta property="article:modified_time" content="2020-03-07T10:27:52.139Z">
+<meta property="article:modified_time" content="2020-03-07T10:28:57.190Z">
 <meta property="article:author" content="lu2hx0">
 <meta property="article:tag" content="web安全">
 <meta property="article:tag" content="渗透学习">
@@ -177,7 +177,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="工具使用：Burp-suite-pro-v1-6-Sqlmap1-3-11-80，Firefox，Google-Chrome"><a href="#工具使用：Burp-suite-pro-v1-6-Sqlmap1-3-11-80，Firefox，Google-Chrome" class="headerlink" title="工具使用：Burp suite pro-v1.6,Sqlmap1.3.11.80，Firefox，Google Chrome"></a>工具使用：Burp suite pro-v1.6,Sqlmap1.3.11.80，Firefox，Google Chrome</h4><h4 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h4><p>打开burpsuite在burpsuite的spider模块，点击spider status里面spider is running打开spider，然后在target模块里面的左边会出现网址(主)，然后点击要查看的网址，登录网址，在target模块的界面右侧会出现，网址目录，包括mime类型，开始查找我们要的asp或者php<br>找了很多的学校<br>攀枝花学院的 zsw.pzhu.cn 站内有一搜索框，检查反射性xss漏洞，输入一段<br>` payload:script&gt;alert(hack by try2be)</script><br>返回响应输入参数含有不允许的串，可能引起注入或跨站脚本风险，禁止本页面执行！ </p>
+        <h4 id="工具使用：Burp-suite-pro-v1-6-Sqlmap1-3-11-80，Firefox，Google-Chrome"><a href="#工具使用：Burp-suite-pro-v1-6-Sqlmap1-3-11-80，Firefox，Google-Chrome" class="headerlink" title="工具使用：Burp suite pro-v1.6,Sqlmap1.3.11.80，Firefox，Google Chrome"></a>工具使用：Burp suite pro-v1.6,Sqlmap1.3.11.80，Firefox，Google Chrome</h4><a id="more"></a>
+<h4 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h4><p>打开burpsuite在burpsuite的spider模块，点击spider status里面spider is running打开spider，然后在target模块里面的左边会出现网址(主)，然后点击要查看的网址，登录网址，在target模块的界面右侧会出现，网址目录，包括mime类型，开始查找我们要的asp或者php<br>找了很多的学校<br>攀枝花学院的 zsw.pzhu.cn 站内有一搜索框，检查反射性xss漏洞，输入一段<br>` payload:script&gt;alert(hack by try2be)</script><br>返回响应输入参数含有不允许的串，可能引起注入或跨站脚本风险，禁止本页面执行！ </p>
 <ul>
 <li>乐山师范的邮箱登录页面</li>
 <li><a href="https://mail.lsnu.edu.cn/?q=resetpw" target="_blank" rel="noopener">https://mail.lsnu.edu.cn/?q=resetpw</a><br>可以看到url中有一参数q，尝试sqlmap查看是否可以注入<br>返回heuristic (basic) test shows that GET parameter ‘q’ might not be injectable<br>没戏<br>乐山师范的教工登录数字校园：</li>
