@@ -16,7 +16,7 @@
 <meta property="og:description" content="工具使用：Burp suite pro-v1.6,Sqlmap1.3.11.80，Firefox，Google Chrome">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-03-07T10:26:02.745Z">
-<meta property="article:modified_time" content="2020-03-07T10:28:57.190Z">
+<meta property="article:modified_time" content="2020-03-07T10:49:12.142Z">
 <meta property="article:author" content="lu2hx0">
 <meta property="article:tag" content="web安全">
 <meta property="article:tag" content="渗透学习">
@@ -188,7 +188,7 @@
 </ul>
 <p>先尝试弱密码（这里只是简单的尝试了几种万能密码和sql注入语句），失败</p>
 <p>最后尝试爆破<br>首先就有个问题，我新换的这个v1.6版本的burp有点奇怪，因为他没有start attack。？？？？？<br>也google不到类似的问题，那现在我用1.7的burp来做爆破<br>cmd 进入burp1.7的文件夹<br>dos：java -jar BurpUnlimited.jar<br>打开burp1.7<br>开启proxy<br>抓包send to intruder<br>positions 先clear<br>然后在 name和 password处add<br>选择 Attack type 为 Cluster bomb<br>payloads设置<br>1设置为 number(因为他要的是六位教工号)，2设置好字典-payload options 点击load加入准备好的字典。<br>(这里的密码经过base64所以要在payload processing设置 add rule encode base64)<br>设置好了后 start attack 等结果<br>经历了一个十分漫长的等待，居然还没有把第一个字典爆完(所以真的需要耐心还有强大的字典<br>从晚上10点开始到早上8点，十个小时，414025/20700000，我觉得，有点困难<br>所有字典在尝试了一个多星期左右时间都没有成功</p>
-<p>弱密码的确是占了很大部分的EDUSRC，但是这并不容易，所以我想 我还是把重心放在XSS上面。虽然并没有成功，但是通过这次尝试也学到了很多。</p>
+<p>弱密码的确是占了很大部分的EDUSRC，但是这并不容易，需要强大的字典和计算机还有耐心，所以我想 我还是把重心放在XSS上面。虽然并没有成功(不过我确信这里的洞到目前为止还是没有修复的<a href="https://vpn.lsnu.edu.cn/por/login_psw.csp?sfrnd=2346912324982305&amp;encrypt=1" target="_blank" rel="noopener">https://vpn.lsnu.edu.cn/por/login_psw.csp?sfrnd=2346912324982305&amp;encrypt=1</a><br>)，但是通过这次尝试也学到了很多。</p>
 
       
 
